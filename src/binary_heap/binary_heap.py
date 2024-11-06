@@ -61,9 +61,9 @@ class BinaryHeap:
             self.heap_down(1)
 
     def display_heap(self, screen, font):
-        screen.fill((0, 0, 0))  # Limpa a tela
-        self.draw_heap_nodes(self.heap[1:], screen, font)  # Desenha o heap sem o inf
-        pygame.display.flip()  # Atualiza a tela
+        screen.fill((0, 0, 0))
+        self.draw_heap_nodes(self.heap[1:], screen, font)
+        pygame.display.flip()
 
     def draw_node(self, value, x, y, radius, screen, font):
         pygame.draw.circle(screen, (255, 255, 255), (x, y), radius)
@@ -78,9 +78,9 @@ class BinaryHeap:
         node_radius = 30
 
         for i, value in enumerate(arr):
-            level = math.floor(math.log2(i + 1))  # Nível do nó na árvore
-            index_in_level = i - (2**level - 1)   # Índice do nó no nível
-            nodes_in_level = 2**level             # Número de nós no nível
+            level = math.floor(math.log2(i + 1))
+            index_in_level = i - (2**level - 1) 
+            nodes_in_level = 2**level     
 
             # Cálculo da posição x do nó
             node_x = root_x + (index_in_level - (nodes_in_level - 1) / 2) * (node_radius * 3)

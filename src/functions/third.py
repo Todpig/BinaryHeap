@@ -3,15 +3,15 @@ from src.utils import verify_empty_heap
 from src.binary_heap.binary_heap import BinaryHeap
 from src.utils import wait_time
 
-def second_set_of_numbers(binary_heap: BinaryHeap):
-    step = 2
+def third_set_of_numbers(binary_heap: BinaryHeap):
+    step = 3
     pygame.init()
     screen_width, screen_height = 800, 600
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Binary Heap Tree Visualization")
     font = pygame.font.SysFont(None, 36)
 
-    array_values = [1, 2, 3, 4, 5, 6, 7, 8, 9 , 10]
+    array_values = [50, 40, 30, 20, 10, 5, 3]
 
     # Step 1: Insert values into the binary heap
     for value in array_values:
@@ -32,8 +32,8 @@ def second_set_of_numbers(binary_heap: BinaryHeap):
 
      # Step 2: Change priorities
     values = {
-        4: 15,
-        8: 3  
+        2: 60,
+        5: 1  
     }
     for index in list(values.keys()):
         binary_heap.change_priority(index, values[index])
@@ -51,8 +51,8 @@ def second_set_of_numbers(binary_heap: BinaryHeap):
 
     pygame.time.delay(wait_time)
 
-    # Step 3: Remove five elements from the heap
-    for _ in range(5):
+    # Step 3: Remove three elements from the heap
+    for _ in range(3):
         binary_heap.remove()
         binary_heap.display_heap(screen, font)
         priority_text = verify_empty_heap(binary_heap, step)

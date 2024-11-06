@@ -1,9 +1,10 @@
 import pygame
 from src.utils import verify_empty_heap
 from src.binary_heap.binary_heap import BinaryHeap
+from src.utils import wait_time
 
 def first_set_of_numbers(binary_heap: BinaryHeap):
-    wait_time = 500
+    step = 1
     pygame.init()
     screen_width, screen_height = 800, 600
     screen = pygame.display.set_mode((screen_width, screen_height))
@@ -16,7 +17,7 @@ def first_set_of_numbers(binary_heap: BinaryHeap):
     for value in array_values:
         binary_heap.insert(value)
         binary_heap.display_heap(screen, font)
-        priority_text = verify_empty_heap(binary_heap)
+        priority_text = verify_empty_heap(binary_heap, step)
         priority_surface = font.render(priority_text, True, (255, 255, 255))
         screen.blit(priority_surface, (20, 20))
         pygame.display.flip()
@@ -38,7 +39,7 @@ def first_set_of_numbers(binary_heap: BinaryHeap):
         binary_heap.change_priority(index, values[index])
         binary_heap.display_heap(screen, font)
         
-        priority_text = verify_empty_heap(binary_heap)
+        priority_text = verify_empty_heap(binary_heap, step)
         
         priority_surface = font.render(priority_text, True, (255, 255, 255))
         screen.blit(priority_surface, (20, 20))  
@@ -57,7 +58,7 @@ def first_set_of_numbers(binary_heap: BinaryHeap):
     for _ in range(3):
         binary_heap.remove()
         binary_heap.display_heap(screen, font)  
-        priority_text = verify_empty_heap(binary_heap)
+        priority_text = verify_empty_heap(binary_heap, step)
         priority_surface = font.render(priority_text, True, (255, 255, 255))
         screen.blit(priority_surface, (20, 20))  
         pygame.display.flip()
@@ -69,7 +70,7 @@ def first_set_of_numbers(binary_heap: BinaryHeap):
         binary_heap.remove()
         binary_heap.heap_sort()
         binary_heap.display_heap(screen, font)
-        priority_text = verify_empty_heap(binary_heap)
+        priority_text = verify_empty_heap(binary_heap, step)
         priority_surface = font.render(priority_text, True, (255, 255, 255))
         screen.blit(priority_surface, (20, 20))
         pygame.display.flip()
