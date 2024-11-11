@@ -42,12 +42,13 @@ class BinaryHeap:
             self.heap.pop()
             self.heap_down(1)
 
-    def change_priority (self, start_index: int, new_priority: int):
+    def change_priority(self, start_index: int, new_priority: int):
         old_value = self.heap[start_index]
         self.heap[start_index] = new_priority
-        self.heap.append(old_value)
-        self.size += 1
-        self.heap_sort()
+        if new_priority > old_value:
+            self.heap_up(start_index)
+        else:
+            self.heap_down(start_index)
 
     def get_high_priority(self):
         return self.heap[1]
@@ -72,7 +73,7 @@ class BinaryHeap:
 
     def draw_heap_nodes(self, arr, screen, font):
         positions = {}
-        root_x = 400
+        root_x = 640
         root_y = 50
         level_height = 100
         node_radius = 30
