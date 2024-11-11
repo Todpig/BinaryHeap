@@ -60,7 +60,7 @@ class Run:
 
     def step_four(self):
         for _ in range(self.binary_heap.size):
-            self.binary_heap.remove()
+            # self.binary_heap.remove()
             self.binary_heap.heap_sort()
             self.binary_heap.display_heap(self.screen, self.font)
             priority_text = verify_empty_heap(self.binary_heap, self.question)
