@@ -12,3 +12,4 @@ def third_set_of_numbers():
     running.step_two()
     running.step_three()
     running.step_four()
+    running.quit()

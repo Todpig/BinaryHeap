@@ -1,4 +1,3 @@
-from src.binary_heap.binary_heap import BinaryHeap
 from src.functions import first, second, third, fourth
 
 

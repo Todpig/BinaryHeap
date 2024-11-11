@@ -21,18 +21,21 @@ class BinaryHeap:
             self.heap[start], self.heap[parent] = self.heap[parent], self.heap[start]
             self.heap_up(parent)
 
-    def heap_down(self, start: int):
+    def heap_down(self, start: int, size: int = None):
+        if size is None:
+            size = self.size
+            
         largest = start
         left = 2 * start
         right = 2 * start + 1
 
-        if left <= self.size and self.heap[left] > self.heap[largest]:
+        if left <= size and self.heap[left] > self.heap[largest]:
             largest = left
-        if right <= self.size and self.heap[right] > self.heap[largest]:
+        if right <= size and self.heap[right] > self.heap[largest]:
             largest = right
         if largest != start:
             self.heap[start], self.heap[largest] = self.heap[largest], self.heap[start]
-            self.heap_down(largest)
+            self.heap_down(largest, size)
 
     def remove(self):
         if self.size != 0:
@@ -53,13 +56,20 @@ class BinaryHeap:
     def get_high_priority(self):
         return self.heap[1]
 
-    def heap_sort(self):
+    def heap_sort(self, screen=None, font=None):
+        from src.utils import draw_heap
         self.arrange()
-        max_length = self.size
-        while max_length > 1:
-            self.heap[1], self.heap[max_length] = self.heap[max_length],  self.heap[1]
-            max_length -= 1
-            self.heap_down(1)
+        current_size = self.size
+        while current_size > 1:
+            if screen is not None and font is not None:
+                draw_heap(self, screen, font)
+            self.heap[1], self.heap[current_size] = self.heap[current_size], self.heap[1]
+            current_size -= 1
+            self.heap_down(1, current_size)
+            pygame.time.delay(1000)
+        if screen is not None and font is not None:
+            draw_heap(self, screen, font)
+
 
     def display_heap(self, screen, font):
         screen.fill((0, 0, 0))

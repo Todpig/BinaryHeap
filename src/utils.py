@@ -1,10 +1,13 @@
+import pygame
 from src.binary_heap.binary_heap import BinaryHeap
 
 wait_time = 500
 
-def verify_empty_heap(binary_heap: BinaryHeap, step: int):
-    if binary_heap.size > 0:
-            high_priority_value = binary_heap.get_high_priority()
-            return f"Quest: {step} - Highest Priority: {high_priority_value}"
-   
-    return f"Quest: {step} - Heap is empty"
+
+def draw_heap(binary_heap: BinaryHeap, screen, font):
+        binary_heap.display_heap(screen, font)
+        priority_text = f"Highest Priority: {binary_heap.heap[1]}"
+        priority_surface = font.render(priority_text, True, (255, 255, 255))
+        screen.blit(priority_surface, (20, 20))
+        pygame.display.flip()
+        pygame.time.delay(wait_time)
