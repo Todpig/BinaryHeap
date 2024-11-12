@@ -93,11 +93,9 @@ class BinaryHeap:
             index_in_level = i - (2**level - 1) 
             nodes_in_level = 2**level     
 
-            # Cálculo da posição x do nó
             node_x = root_x + (index_in_level - (nodes_in_level - 1) / 2) * (node_radius * 3)
-            node_y = root_y + level * level_height  # Cálculo da posição y do nó
+            node_y = root_y + level * level_height 
 
-            # Desenha a linha de ligação com o nó pai
             if i > 0:
                 parent_index = (i - 1) // 2
                 parent_x, parent_y = positions[parent_index]

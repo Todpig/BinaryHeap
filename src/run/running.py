@@ -36,16 +36,22 @@ class Run:
                     return
             pygame.time.delay(wait_time)
 
-    def step_three(self):     
-        for _ in range(5):
+    def step_three(self, count: int):     
+        for _ in range(count):
             self.binary_heap.remove()
             draw_heap(self.binary_heap, self.screen, self.font)
 
 
     def step_four(self):
-        self.binary_heap.heap_sort(self.screen, self.font)
+        new_binary_heap = BinaryHeap(self.binary_heap.heap[1:])
+        new_binary_heap.heap_sort(self.screen, self.font)
         pygame.time.delay(wait_time)
 
+    def step_five(self):
+        priority_surface = self.font.render(f"Highest Priority is: {self.binary_heap.heap[1]}", True, (255, 255, 255))
+        self.screen.blit(priority_surface, (640, 600))
+        pygame.display.flip()
+        pygame.time.delay(wait_time)
 
     def quit(self):
         pygame.quit()
